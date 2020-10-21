@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+var config = require('../config');
 
 /**
  * Module dependencies.
@@ -8,11 +9,12 @@ var app = require('../app');
 var debug = require('debug')('api-gateway:server');
 var http = require('http');
 
+
 /**
  * Get port from environment and store in Express.
  */
 
-var port = normalizePort(process.env.PORT || '3000');
+var port = normalizePort(config.web.port);
 app.set('port', port);
 
 /**
@@ -76,6 +78,8 @@ function onError(error) {
       throw error;
   }
 }
+
+
 
 /**
  * Event listener for HTTP server "listening" event.

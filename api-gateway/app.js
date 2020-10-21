@@ -1,6 +1,6 @@
  /*
 ============================================
-; Title:  Exercise 1.4
+; Title:  Assignment 1.4
 ; Author: Professor Krasso
 ; Date:   October 20 2020
 ; Modified By: Juvenal Gonzalez

@@ -17,9 +17,10 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
+var curl =  require("curl");
 mongoose.Promise = require('bluebird')
 var indexRouter = require('./routes/index');
-
+var apiCatalog = require("./routes/api-catalog"); 
 
 var app = express();
 
@@ -37,6 +38,8 @@ app.use('/', indexRouter);
 //app.use('/users', usersRouter);
 //database conn variable
 const conn =  "mongodb+srv://buwebdev-cluster-1.ygmqi.mongodb.net/api-gateway"
+//API Catalog Route
+app.use("/api", apiCatalog); 
 
 //Database Connection
 mongoose.connect(conn,{
@@ -66,4 +69,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+
+
+
 module.exports = app;
+

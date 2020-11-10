@@ -9,7 +9,7 @@
 */
 
 const header = require('../gonzalez-header');
-console.log(header.display("Juvenal", "Gonzalez", "Exercise 1.4"));
+console.log(header.display("Juvenal", "Gonzalez", "Exercise 4.3"));
 
 var createError = require('http-errors');
 var express = require('express');

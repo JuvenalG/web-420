@@ -1,3 +1,13 @@
+ /*
+============================================
+; Title:  Assignment 4.3
+; Author: Professor Krasso
+; Date:   November 09 2020
+; Modified By: Juvenal Gonzalez
+; Description: routes to auth_controller
+;===========================================
+*/
+
 /**
 * API Routes
 */

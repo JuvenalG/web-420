@@ -9,37 +9,25 @@
 */
 
 const header = require('../gonzalez-header');
-console.log(header.display("Juvenal", "Gonzalez", "Exercise 4.3"));
+console.log(header.display("Juvenal", "Gonzalez", "Assignment 5.4"));
 
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+//var favicon = require('get-website-favicon');
 var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
 var logger = require('morgan');
 var mongoose = require("mongoose");
-var curl =  require("curl");
 mongoose.Promise = require('bluebird')
+
 var indexRouter = require('./routes/index');
 var apiCatalog = require("./routes/api-catalog"); 
 
 var app = express();
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+const conn =  "mongodb+srv://admin:admin@buwebdev-cluster-1.ygmqi.mongodb.net/<dbname>?retryWrites=true&w=majority"
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
-
-app.use('/', indexRouter);
-//app.use('/users', usersRouter);
-//database conn variable
-const conn =  "mongodb+srv://buwebdev-cluster-1.ygmqi.mongodb.net/api-gateway"
-//API Catalog Route
-app.use("/api", apiCatalog); 
 
 //Database Connection
 mongoose.connect(conn,{
@@ -52,6 +40,27 @@ mongoose.connect(conn,{
 }).catch(err => {
   console.log("MongoDB eroor: ${err.message")
 });//end mongoose connection
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+//app.use('/users', usersRouter);
+//database conn variable
+
+//API Catalog Route
+app.use("/api", apiCatalog); 
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

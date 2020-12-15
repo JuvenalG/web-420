@@ -8,8 +8,7 @@
 ;===========================================
 */
 
-const header = require('../gonzalez-header');
-console.log(header.display("Juvenal", "Gonzalez", "Assignment 5.4"));
+
 
 var createError = require('http-errors');
 var express = require('express');
